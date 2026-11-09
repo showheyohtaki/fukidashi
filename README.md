@@ -81,5 +81,10 @@ Chrome ウェブストアには公開していません。手元で組み立て�
 | [CHANGELOG.md](CHANGELOG.md) | 版ごとの変更 |
 | [docs/dev/README-dev.md](docs/dev/README-dev.md) | 開発者向け（構成・ビルド・試験） |
 | [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) | 第三者ライセンス |
+| [LICENSE](LICENSE) | このリポジトリのライセンス（MIT） |
 
 AI に設定を手伝ってもらうときは、このリポジトリ（または [AGENTS.md](AGENTS.md)・[llms.txt](llms.txt)）を AI に読ませて、「この Chrome 拡張の入れ方を教えて」と頼んでください。API キーは AI に貼らず、ご自身でパネルに入れてください。
+
+## ライセンス
+
+MIT License です。無料で使え、改変・再配布もできます。くわしくは [LICENSE](LICENSE) を見てください。同梱している第三者のコードのライセンスは [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) にあります。

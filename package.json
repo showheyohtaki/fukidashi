@@ -2,6 +2,7 @@
   "name": "fukidashi",
   "version": "1.2.4",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
