@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>ダーク・状態バー6種</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Sans+JP:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#62AEF0}a:hover{color:#8CC4FF}
+</style>
+</helmet>
+<div style="width: 400px; height: 860px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px; padding: 24px 0; background: #191918; color: #EDECE9; font-family: Inter, 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif; font-size: 14px; line-height: 1.5">
+  <!--
+    ダークの状態バー 6 種（値は Dark.dc.html の注記と同じ。丸の中の線は #191918）
+    待っている #3AAFA9／#182B29／#7FD6D0　6秒以上 #E0B530／#2F2812／#F0CF6A　話している #F07A2A／#33221A／#FFAE73
+    送信中 #3B97F0／#172636／#8CC4FF　ミュート #F0645C／#361C1B／#FF9A92　接続中 #8E8983／#252423／#C7C2BB
+  -->
+
+  <div style="padding: 0 16px">
+    <div style="font-size: 17px; font-weight: 600; color: #EDECE9">状態バー（ダーク）</div>
+    <div style="font-size: 12px; color: #A8A39D; margin-top: 2px">帯と丸は明るく、地は同じ色を暗く沈めています</div>
+  </div>
+
+  <!-- 1. 待っている -->
+  <div>
+    <div style="padding: 0 14px 6px; font-size: 12px; font-weight: 500; color: #A8A39D">待っている</div>
+    <div role="status" style="height: 56px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 6px 0 0; background: #182B29; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.08)">
+      <div style="width: 6px; align-self: stretch; background: #3AAFA9"></div>
+      <div style="width: 28px; height: 28px; border-radius: 14px; background: #3AAFA9; display: flex; align-items: center; justify-content: center; flex: none; margin-left: 4px">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#191918" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8.5a6 6 0 0 1 12 0c0 3.5-3 4.5-3 7.5a3 3 0 0 1-5.6 1.5"></path><path d="M9 9a3 3 0 0 1 6 0"></path></svg>
+      </div>
+      <div style="flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; white-space: nowrap">
+        <span style="font-size: 15px; font-weight: 600; color: #7FD6D0">相手が待っています</span>
+        <span style="font-size: 20px; font-weight: 600; color: #7FD6D0; font-variant-numeric: tabular-nums">3<span style="font-size: 13px; margin-left: 2px">秒</span></span>
+      </div>
+      <button aria-label="メニュー（設定・会話を停止）" title="設定・会話を停止" style="width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8A39D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. 6秒以上 -->
+  <div>
+    <div style="padding: 0 14px 6px; font-size: 12px; font-weight: 500; color: #A8A39D">6秒以上</div>
+    <div role="status" style="height: 56px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 6px 0 0; background: #2F2812; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.08)">
+      <div style="width: 6px; align-self: stretch; background: #E0B530"></div>
+      <div style="width: 28px; height: 28px; border-radius: 14px; background: #E0B530; display: flex; align-items: center; justify-content: center; flex: none; margin-left: 4px">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#191918" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(-2.5 0)"><path d="M6 8.5a6 6 0 0 1 12 0c0 3.5-3 4.5-3 7.5a3 3 0 0 1-5.6 1.5"></path><path d="M9 9a3 3 0 0 1 6 0"></path></g><path d="M20.5 4.5v7"></path><path d="M20.5 16v.01"></path></svg>
+      </div>
+      <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px">
+        <div style="display: flex; align-items: baseline; gap: 8px; line-height: 1.2; white-space: nowrap">
+          <span style="font-size: 15px; font-weight: 600; color: #F0CF6A">相手が待っています</span>
+          <span style="font-size: 20px; font-weight: 600; color: #F0CF6A; font-variant-numeric: tabular-nums">7<span style="font-size: 13px; margin-left: 2px">秒</span></span>
+        </div>
+        <span style="font-size: 12px; line-height: 1.3; font-weight: 500; color: #F0CF6A; white-space: nowrap">相づちで間をつなげます</span>
+      </div>
+      <button aria-label="メニュー（設定・会話を停止）" title="設定・会話を停止" style="width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8A39D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 3. 話している -->
+  <div>
+    <div style="padding: 0 14px 6px; font-size: 12px; font-weight: 500; color: #A8A39D">話している</div>
+    <div role="status" style="height: 56px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 6px 0 0; background: #33221A; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.08)">
+      <div style="width: 6px; align-self: stretch; background: #F07A2A"></div>
+      <div style="width: 28px; height: 28px; border-radius: 14px; background: #F07A2A; display: flex; align-items: center; justify-content: center; flex: none; margin-left: 4px">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#191918" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12c2-3 7-3 9 0c-2 3-7 3-9 0z"></path><path d="M15 9a4 4 0 0 1 0 6"></path><path d="M18.5 6.5a8 8 0 0 1 0 11"></path></svg>
+      </div>
+      <div style="flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; white-space: nowrap">
+        <span style="font-size: 15px; font-weight: 600; color: #FFAE73">相手が話しています</span>
+      </div>
+      <button aria-label="メニュー（設定・会話を停止）" title="設定・会話を停止" style="width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8A39D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 4. 送信中（レベルメーター・止める） -->
+  <div>
+    <div style="padding: 0 14px 6px; font-size: 12px; font-weight: 500; color: #A8A39D">送信中</div>
+    <div role="status" style="height: 56px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 6px 0 0; background: #172636; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.08)">
+      <div style="width: 6px; align-self: stretch; background: #3B97F0"></div>
+      <div style="width: 28px; height: 28px; border-radius: 14px; background: #3B97F0; display: flex; align-items: center; justify-content: center; flex: none; margin-left: 4px">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#191918" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M18.5 5.5a9 9 0 0 1 0 13"></path></svg>
+      </div>
+      <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px">
+        <span style="font-size: 15px; line-height: 1.3; font-weight: 600; color: #8CC4FF">送信中</span>
+        <span title="それは気になりますね。どのあたりが見づら…" style="font-size: 12px; line-height: 1.3; color: #8CC4FF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">それは気になりますね。どのあたりが見づら…</span>
+      </div>
+      <div aria-hidden="true" style="flex: none; height: 22px; display: flex; align-items: center; gap: 1px">
+        <span style="display: block; width: 3px; height: 6px; border-radius: 2px; background: #3B97F0"></span>
+        <span style="display: block; width: 3px; height: 12px; border-radius: 2px; background: #3B97F0"></span>
+        <span style="display: block; width: 3px; height: 19px; border-radius: 2px; background: #3B97F0"></span>
+        <span style="display: block; width: 3px; height: 11px; border-radius: 2px; background: #3B97F0"></span>
+        <span style="display: block; width: 3px; height: 16px; border-radius: 2px; background: #3B97F0"></span>
+        <span style="display: block; width: 3px; height: 8px; border-radius: 2px; background: #3B97F0"></span>
+        <span style="display: block; width: 3px; height: 13px; border-radius: 2px; background: #3B97F0"></span>
+        <span style="display: block; width: 3px; height: 5px; border-radius: 2px; background: #3B97F0"></span>
+      </div>
+      <button title="読み上げを止める（Esc）" style="height: 44px; padding: 0 6px; flex: none; display: flex; align-items: center; border: 2px solid #F0645C; background: #361C1B; color: #FF9A92; border-radius: 6px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap">止める<span style="font-size: 12px; font-weight: 500">（Esc）</span></button>
+      <button aria-label="メニュー（設定・会話を停止）" title="設定・会話を停止" style="width: 44px; height: 44px; flex: none; margin-left: -4px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8A39D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 5. ミュート -->
+  <div>
+    <div style="padding: 0 14px 6px; font-size: 12px; font-weight: 500; color: #A8A39D">ミュート</div>
+    <div role="status" style="height: 56px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 6px 0 0; background: #361C1B; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.08)">
+      <div style="width: 6px; align-self: stretch; background: #F0645C"></div>
+      <div style="width: 28px; height: 28px; border-radius: 14px; background: #F0645C; display: flex; align-items: center; justify-content: center; flex: none; margin-left: 4px">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#191918" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 9V5a3 3 0 0 1 5.9-.8"></path><path d="M15 10v1a3 3 0 0 1-4.6 2.5"></path><path d="M5 11a7 7 0 0 0 11.3 5.5"></path><path d="M19 11a7 7 0 0 1-.6 2.8"></path><path d="M12 18v3"></path><path d="M3.5 3.5l17 17"></path></svg>
+      </div>
+      <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px">
+        <span style="font-size: 15px; line-height: 1.3; font-weight: 600; color: #FF9A92">会議でミュート中</span>
+        <span style="font-size: 12px; line-height: 1.3; font-weight: 500; color: #FF9A92">先に解除してください</span>
+      </div>
+      <button aria-label="メニュー（設定・会話を停止）" title="設定・会話を停止" style="width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8A39D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 6. 接続中 -->
+  <div>
+    <div style="padding: 0 14px 6px; font-size: 12px; font-weight: 500; color: #A8A39D">接続中</div>
+    <div role="status" style="height: 56px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 6px 0 0; background: #252423; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.08)">
+      <div style="width: 6px; align-self: stretch; background: #8E8983"></div>
+      <div style="width: 28px; height: 28px; border-radius: 14px; background: #8E8983; display: flex; align-items: center; justify-content: center; flex: none; margin-left: 4px">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#191918" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7"></path><path d="M20 4v5h-5"></path></svg>
+      </div>
+      <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px">
+        <span style="font-size: 15px; line-height: 1.3; font-weight: 600; color: #C7C2BB">つないでいます…</span>
+        <span style="display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 1.3; font-weight: 500; color: #C7C2BB; white-space: nowrap">
+          <span style="display: flex; align-items: center; gap: 2px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#3AAFA9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>字幕</span>
+          <span style="display: flex; align-items: center; gap: 2px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#3AAFA9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>声</span>
+          <span style="display: flex; align-items: center; gap: 2px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C7C2BB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7"></path><path d="M20 4v5h-5"></path></svg>会議のマイク</span>
+        </span>
+      </div>
+      <button aria-label="メニュー（設定・会話を停止）" title="設定・会話を停止" style="width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8A39D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
+      </button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":400,"height":860}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

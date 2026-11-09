@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "フキダシ",
+  "version": "1.2.4",
+  "minimum_chrome_version": "116",
+  "description": "相手の声を字幕で読み、選んだ・打った文を AI の声で会議に届けます。Zoom はベータ対応。",
+  "permissions": [
+    "storage",
+    "sidePanel",
+    "tabCapture",
+    "activeTab",
+    "offscreen"
+  ],
+  "host_permissions": ["https://api.openai.com/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "フキダシを開く",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src https://api.openai.com wss://api.openai.com;"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*", "https://*.zoom.us/wc/*"],
+      "js": ["inject.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://meet.google.com/*", "https://*.zoom.us/wc/*"],
+      "js": ["meet-speakers.js", "bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

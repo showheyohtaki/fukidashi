@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>フキダシ</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+    <link rel="stylesheet" href="ui/lucian.css" />
+  </head>
+  <body class="ux">
+    <main id="app">
+      <div class="loading" role="status">フキダシを開いています…</div>
+    </main>
+    <div
+      id="live-caption"
+      class="sr"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <div id="notice" class="notice u072" role="status" hidden></div>
+    <script type="module" src="sidepanel.js"></script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>質問・定型文の編集</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Sans+JP:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0075DE}a:hover{color:#005BAB}
+</style>
+</helmet>
+<div style="width: 400px; height: 1340px; box-sizing: border-box; display: flex; flex-direction: column; background: #FFFFFF; color: #191918; font-family: Inter, 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif; font-size: 14px; line-height: 1.5">
+
+  <!-- 見出し（設定と同じ形） -->
+  <div style="flex: none; height: 48px; box-sizing: border-box; display: flex; align-items: center; gap: 4px; padding: 0 16px 0 4px; border-bottom: 1px solid rgba(0,0,0,0.08)">
+    <button aria-label="戻る" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    </button>
+    <h1 style="margin: 0; font-size: 18px; font-weight: 600; line-height: 1.4">質問・定型文の編集</h1>
+    <span style="margin-left: auto; font-size: 12px; color: #615D59; white-space: nowrap">変更はすぐに保存されます</span>
+  </div>
+
+  <!-- 本文（縦にスクロール） -->
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 12px 16px 24px">
+
+    <!-- タブ（選んだタブは青の文字と下線。件数を小さく添える） -->
+    <div role="tablist" aria-label="編集する一覧" style="flex: none; display: flex; gap: 4px; border-bottom: 1px solid rgba(0,0,0,0.08)">
+      <button role="tab" aria-selected="true" style="height: 44px; padding: 0 12px; border: none; border-bottom: 2px solid #0075DE; background: transparent; color: #0075DE; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer">今日の項目 <small style="font-size: 11px; color: inherit; font-variant-numeric: tabular-nums">7</small></button>
+      <button role="tab" aria-selected="false" style="height: 44px; padding: 0 12px; border: none; border-bottom: 2px solid transparent; background: transparent; color: #615D59; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer">よく使う <small style="font-size: 11px; color: inherit; font-variant-numeric: tabular-nums">4</small></button>
+    </div>
+
+    <!-- 一覧の画面の説明 -->
+    <p style="margin: 0; font-size: 12px; line-height: 1.6; color: #615D59">会話中は「今日の項目」のシート（⌥H）からも同じ一覧を直せます。声がつながると、項目と定型文の声を上から 20 件まで先に作り、押すとすぐ声が出ます（声を作る分の OpenAI の利用料がかかります。同じ文は作り直しません）。</p>
+    <p style="margin: 0; font-size: 12px; line-height: 1.6; color: #615D59">今日の議題から項目を作るときは、会議の開始前の画面（「開始」ボタンの上）を使います。</p>
+
+    <!-- 編集の欄 -->
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <p style="margin: 0; font-size: 12px; line-height: 1.6; color: #615D59">今日の会議で、読み上げてお客様に聞く・確認する文です。1 問は 45 字（読み上げ 10 秒）以内が目安です。変更はすぐに保存し、会話中なら変えた項目の声だけを作り直します。</p>
+
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+        <li style="display: grid; grid-template-columns: 20px 1fr 36px; gap: 8px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06)">
+          <span aria-hidden="true" style="padding-top: 12px; text-align: right; font-size: 12px; font-weight: 600; color: #615D59; font-variant-numeric: tabular-nums">1</span>
+          <div style="min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <textarea rows="2" aria-label="今日の項目の 1 番目" style="display: block; width: 100%; box-sizing: border-box; min-height: 56px; height: 58px; resize: vertical; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 8px 10px; font: inherit; font-size: 13px; line-height: 1.5; color: #191918; background: #FFFFFF">今回ご相談いただいたきっかけを、お聞かせいただけますでしょうか。</textarea>
+            <small style="font-size: 11px; color: #615D59; font-variant-numeric: tabular-nums">32 字</small>
+          </div>
+          <div style="display: grid; grid-template-columns: 36px; gap: 2px">
+            <button disabled aria-label="1 番目を上へ" title="上へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A39E98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="1 番目を下へ" title="下へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="1 番目を削除" title="削除" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A12A25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+          </div>
+        </li>
+        <li style="display: grid; grid-template-columns: 20px 1fr 36px; gap: 8px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06)">
+          <span aria-hidden="true" style="padding-top: 12px; text-align: right; font-size: 12px; font-weight: 600; color: #615D59; font-variant-numeric: tabular-nums">2</span>
+          <div style="min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <textarea rows="2" aria-label="今日の項目の 2 番目" style="display: block; width: 100%; box-sizing: border-box; min-height: 56px; height: 58px; resize: vertical; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 8px 10px; font: inherit; font-size: 13px; line-height: 1.5; color: #191918; background: #FFFFFF">現在の業務や取り組みでお困りの点を、教えていただけますでしょうか。</textarea>
+            <small style="font-size: 11px; color: #615D59; font-variant-numeric: tabular-nums">33 字</small>
+          </div>
+          <div style="display: grid; grid-template-columns: 36px; gap: 2px">
+            <button aria-label="2 番目を上へ" title="上へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="2 番目を下へ" title="下へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="2 番目を削除" title="削除" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A12A25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+          </div>
+        </li>
+        <li style="display: grid; grid-template-columns: 20px 1fr 36px; gap: 8px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06)">
+          <span aria-hidden="true" style="padding-top: 12px; text-align: right; font-size: 12px; font-weight: 600; color: #615D59; font-variant-numeric: tabular-nums">3</span>
+          <div style="min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <textarea rows="2" aria-label="今日の項目の 3 番目" style="display: block; width: 100%; box-sizing: border-box; min-height: 56px; height: 58px; resize: vertical; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 8px 10px; font: inherit; font-size: 13px; line-height: 1.5; color: #191918; background: #FFFFFF">今回のご相談で実現したいことを、お聞かせいただけますでしょうか。</textarea>
+            <small style="font-size: 11px; color: #615D59; font-variant-numeric: tabular-nums">32 字</small>
+          </div>
+          <div style="display: grid; grid-template-columns: 36px; gap: 2px">
+            <button aria-label="3 番目を上へ" title="上へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="3 番目を下へ" title="下へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="3 番目を削除" title="削除" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A12A25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+          </div>
+        </li>
+        <li style="display: grid; grid-template-columns: 20px 1fr 36px; gap: 8px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06)">
+          <span aria-hidden="true" style="padding-top: 12px; text-align: right; font-size: 12px; font-weight: 600; color: #615D59; font-variant-numeric: tabular-nums">4</span>
+          <div style="min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <textarea rows="2" aria-label="今日の項目の 4 番目" style="display: block; width: 100%; box-sizing: border-box; min-height: 56px; height: 58px; resize: vertical; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 8px 10px; font: inherit; font-size: 13px; line-height: 1.5; color: #191918; background: #FFFFFF">差し支えなければ、ご予算の目安を教えていただけますでしょうか。</textarea>
+            <small style="font-size: 11px; color: #615D59; font-variant-numeric: tabular-nums">31 字</small>
+          </div>
+          <div style="display: grid; grid-template-columns: 36px; gap: 2px">
+            <button aria-label="4 番目を上へ" title="上へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="4 番目を下へ" title="下へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="4 番目を削除" title="削除" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A12A25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+          </div>
+        </li>
+        <li style="display: grid; grid-template-columns: 20px 1fr 36px; gap: 8px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06)">
+          <span aria-hidden="true" style="padding-top: 12px; text-align: right; font-size: 12px; font-weight: 600; color: #615D59; font-variant-numeric: tabular-nums">5</span>
+          <div style="min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <textarea rows="2" aria-label="今日の項目の 5 番目" style="display: block; width: 100%; box-sizing: border-box; min-height: 56px; height: 58px; resize: vertical; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 8px 10px; font: inherit; font-size: 13px; line-height: 1.5; color: #191918; background: #FFFFFF">ご希望の完了時期を、お聞かせいただけますでしょうか。</textarea>
+            <small style="font-size: 11px; color: #615D59; font-variant-numeric: tabular-nums">26 字</small>
+          </div>
+          <div style="display: grid; grid-template-columns: 36px; gap: 2px">
+            <button aria-label="5 番目を上へ" title="上へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="5 番目を下へ" title="下へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="5 番目を削除" title="削除" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A12A25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+          </div>
+        </li>
+        <li style="display: grid; grid-template-columns: 20px 1fr 36px; gap: 8px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06)">
+          <span aria-hidden="true" style="padding-top: 12px; text-align: right; font-size: 12px; font-weight: 600; color: #615D59; font-variant-numeric: tabular-nums">6</span>
+          <div style="min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <textarea rows="2" aria-label="今日の項目の 6 番目" style="display: block; width: 100%; box-sizing: border-box; min-height: 56px; height: 58px; resize: vertical; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 8px 10px; font: inherit; font-size: 13px; line-height: 1.5; color: #191918; background: #FFFFFF">今回のご相談に関わるご担当者様を、教えていただけますでしょうか。</textarea>
+            <small style="font-size: 11px; color: #615D59; font-variant-numeric: tabular-nums">32 字</small>
+          </div>
+          <div style="display: grid; grid-template-columns: 36px; gap: 2px">
+            <button aria-label="6 番目を上へ" title="上へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="6 番目を下へ" title="下へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="6 番目を削除" title="削除" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A12A25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+          </div>
+        </li>
+        <li style="display: grid; grid-template-columns: 20px 1fr 36px; gap: 8px; align-items: start; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06)">
+          <span aria-hidden="true" style="padding-top: 12px; text-align: right; font-size: 12px; font-weight: 600; color: #615D59; font-variant-numeric: tabular-nums">7</span>
+          <div style="min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <textarea rows="2" aria-label="今日の項目の 7 番目" style="display: block; width: 100%; box-sizing: border-box; min-height: 56px; height: 58px; resize: vertical; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 8px 10px; font: inherit; font-size: 13px; line-height: 1.5; color: #191918; background: #FFFFFF">今後の進め方について、ご希望をお聞かせいただけますでしょうか。</textarea>
+            <small style="font-size: 11px; color: #615D59; font-variant-numeric: tabular-nums">31 字</small>
+          </div>
+          <div style="display: grid; grid-template-columns: 36px; gap: 2px">
+            <button aria-label="7 番目を上へ" title="上へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button disabled aria-label="7 番目を下へ" title="下へ" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A39E98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"></path><path d="M5 13l7 7 7-7"></path></svg></button>
+            <button aria-label="7 番目を削除" title="削除" style="width: 36px; height: 30px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A12A25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+          </div>
+        </li>
+      </ol>
+
+      <!-- 追加の欄 -->
+      <div style="display: grid; gap: 6px; padding-top: 4px">
+        <label for="list-add" style="font-size: 13px; font-weight: 500; color: #31302E">項目を追加</label>
+        <textarea id="list-add" rows="2" placeholder="例：ご希望の公開時期を、お聞かせいただけますでしょうか。" style="display: block; width: 100%; box-sizing: border-box; min-height: 56px; height: 58px; resize: vertical; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 8px 10px; font: inherit; font-size: 13px; line-height: 1.5; color: #191918; background: #FFFFFF"></textarea>
+        <button style="justify-self: start; height: 44px; padding: 0 14px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer">＋ 追加</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":400,"height":1340}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

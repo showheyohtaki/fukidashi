@@ -1,0 +1,158 @@
+/* Lucian UX/UI Prompt #013, #017, #037, #072, #079, #092, #269, #305 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/ */
+.ux {
+  --ux-page: var(--bg);
+  --ux-surface: var(--bg);
+  --ux-surface-2: var(--surface);
+  --ux-surface-3: var(--hover);
+  --ux-ink: var(--fg);
+  --ux-ink-2: var(--strong);
+  --ux-ink-3: var(--muted);
+  --ux-line: var(--line);
+  --ux-accent: var(--accent);
+  --ux-danger: var(--bad);
+  --ux-spring: cubic-bezier(0.3, 1.1, 0.4, 1);
+  --ux-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  font-family: inherit;
+  word-break: normal;
+  line-break: strict;
+  letter-spacing: normal;
+}
+.u013 {
+  width: 44px;
+  height: 44px;
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  flex: none;
+  touch-action: pan-y;
+}
+.u013:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 44px;
+  height: 26px;
+  background: var(--muted);
+  border-radius: 99px;
+  transition: background 0.2s;
+}
+.u013:after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition:
+    left 0.5s var(--ux-spring),
+    width 0.32s var(--ux-ease);
+}
+.u013[aria-checked="true"]:before {
+  background: var(--accent);
+}
+.u013[aria-checked="true"]:after {
+  left: 21px;
+}
+.u013.stretch:after {
+  width: 24px;
+  transition: width 0.18s;
+}
+.u013[aria-checked="true"].stretch:after {
+  left: 17px;
+}
+.u017 {
+  width: 100%;
+  accent-color: var(--accent);
+  height: 44px;
+  margin: 0;
+  cursor: pointer;
+}
+.u037 {
+  transform-origin: top right;
+  animation: menu-in 0.2s ease;
+}
+.u037 button {
+  transition:
+    background 0.2s,
+    transform 0.45s var(--ux-spring);
+}
+.u072 {
+  transition:
+    opacity 0.3s,
+    transform 0.4s var(--ux-ease);
+}
+.u072.out {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.u079 {
+  background: var(--hover);
+  height: 10px;
+  border-radius: 5px;
+}
+.u079-lines {
+  display: grid;
+  gap: 8px;
+  flex: 1;
+}
+.u079-lines i:nth-child(2) {
+  width: 58%;
+}
+.u079-spin {
+  animation: spin 0.9s linear infinite;
+  display: inline-flex;
+}
+.u092 {
+  transition:
+    opacity 0.3s,
+    transform 0.4s var(--ux-ease);
+}
+.u269[open] {
+  animation: dialog-in 0.35s cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+.u269::backdrop {
+  background: rgba(0, 0, 0, 0.28);
+}
+.u305:not([hidden]) {
+  animation: sheet-in 0.45s cubic-bezier(0.3, 1.1, 0.4, 1);
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+}
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ux *,
+  .ux *:before,
+  .ux *:after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+html[data-motion="reduce"] * {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}

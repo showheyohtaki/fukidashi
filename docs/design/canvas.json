@@ -1,0 +1,317 @@
+{
+  "v": 3,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-31T23:40:00+09:00"
+  },
+  "title": "フキダシ UI",
+  "launch": {
+    "view": "canvas"
+  },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 400,
+      "h": 860,
+      "title": "会議中・相手が待っている（基本）"
+    },
+    "S3a-talking.dc.html": {
+      "x": 480,
+      "y": 0,
+      "w": 400,
+      "h": 860,
+      "title": "相手が話している"
+    },
+    "S3c-thinking.dc.html": {
+      "x": 960,
+      "y": 0,
+      "w": 400,
+      "h": 860,
+      "title": "候補を考えている"
+    },
+    "S4-speaking.dc.html": {
+      "x": 1440,
+      "y": 0,
+      "w": 400,
+      "h": 860,
+      "title": "読み上げ中（送信中）"
+    },
+    "S5-filler.dc.html": {
+      "x": 1920,
+      "y": 0,
+      "w": 400,
+      "h": 860,
+      "title": "入力中・つなぎを送った"
+    },
+    "S3d-overlap.dc.html": {
+      "x": 2400,
+      "y": 0,
+      "w": 400,
+      "h": 860,
+      "title": "ぶつかり（相手も話している）"
+    },
+    "S6-errors.dc.html": {
+      "x": 2880,
+      "y": 0,
+      "w": 400,
+      "h": 860,
+      "title": "会議でミュート＋字幕の再接続"
+    },
+    "E1-bands.dc.html": {
+      "x": 0,
+      "y": 1300,
+      "w": 400,
+      "h": 860,
+      "title": "未参加の帯（6a）＋復帰の緑の帯"
+    },
+    "E2-inline.dc.html": {
+      "x": 480,
+      "y": 1300,
+      "w": 400,
+      "h": 860,
+      "title": "読み上げ失敗・言い換え"
+    },
+    "E3-candfail.dc.html": {
+      "x": 960,
+      "y": 1300,
+      "w": 400,
+      "h": 860,
+      "title": "候補を作れなかった＋新しい字幕"
+    },
+    "E4-badkey.dc.html": {
+      "x": 1440,
+      "y": 1300,
+      "w": 400,
+      "h": 860,
+      "title": "APIキーが無効（ダイアログ）"
+    },
+    "M-menu.dc.html": {
+      "x": 1920,
+      "y": 1300,
+      "w": 400,
+      "h": 860,
+      "title": "メニューと会話の停止の確認"
+    },
+    "F-focus.dc.html": {
+      "x": 2400,
+      "y": 1300,
+      "w": 400,
+      "h": 860,
+      "title": "キーボードのフォーカス表示"
+    },
+    "H700.dc.html": {
+      "x": 2880,
+      "y": 1300,
+      "w": 400,
+      "h": 700,
+      "title": "高さ700pxで帯が2本"
+    },
+    "S0-1-key.dc.html": {
+      "x": 0,
+      "y": 2600,
+      "w": 400,
+      "h": 860,
+      "title": "初回設定 1/3 APIキー"
+    },
+    "S0-2-you.dc.html": {
+      "x": 960,
+      "y": 2600,
+      "w": 400,
+      "h": 860,
+      "title": "初回設定 2/3 あなたのこと"
+    },
+    "S0-3-voice.dc.html": {
+      "x": 1440,
+      "y": 2600,
+      "w": 400,
+      "h": 860,
+      "title": "初回設定 3/3 声の確認"
+    },
+    "S1-idle.dc.html": {
+      "x": 480,
+      "y": 3900,
+      "w": 400,
+      "h": 1064,
+      "title": "開始前（今日の議題・確認・開始）"
+    },
+    "S1b-not-meeting.dc.html": {
+      "x": 0,
+      "y": 3900,
+      "w": 400,
+      "h": 1000,
+      "title": "会議のタブでない画面（会議の前に準備）"
+    },
+    "S2-connecting.dc.html": {
+      "x": 1920,
+      "y": 2600,
+      "w": 400,
+      "h": 860,
+      "title": "接続中"
+    },
+    "S7-summary.dc.html": {
+      "x": 0,
+      "y": 6200,
+      "w": 400,
+      "h": 1200,
+      "title": "ヒアリングまとめ（全体）"
+    },
+    "S7b-summary-fixed.dc.html": {
+      "x": 480,
+      "y": 6200,
+      "w": 400,
+      "h": 860,
+      "title": "ヒアリングまとめ（860px・操作は下に固定）"
+    },
+    "S8-settings.dc.html": {
+      "x": 960,
+      "y": 6200,
+      "w": 400,
+      "h": 2460,
+      "title": "設定"
+    },
+    "S9-voices.dc.html": {
+      "x": 1440,
+      "y": 6200,
+      "w": 400,
+      "h": 1200,
+      "title": "声の選択"
+    },
+    "S11-hearing.dc.html": {
+      "x": 1920,
+      "y": 6200,
+      "w": 400,
+      "h": 860,
+      "title": "今日の項目のシート"
+    },
+    "W360.dc.html": {
+      "x": 0,
+      "y": 9160,
+      "w": 360,
+      "h": 860,
+      "title": "幅360pxでの会議中"
+    },
+    "Dark.dc.html": {
+      "x": 440,
+      "y": 9160,
+      "w": 400,
+      "h": 860,
+      "title": "ダークモードの会議中"
+    },
+    "Dark-states.dc.html": {
+      "x": 920,
+      "y": 9160,
+      "w": 400,
+      "h": 860,
+      "title": "ダークモードの状態バー6種"
+    },
+    "S0-1b-badkey.dc.html": {
+      "x": 480,
+      "y": 2600,
+      "w": 400,
+      "h": 860,
+      "title": "初回設定 1/3 キーが無効（401）"
+    },
+    "S1c-prep-draft.dc.html": {
+      "w": 400,
+      "x": 960,
+      "y": 3900,
+      "h": 1700,
+      "title": "開始前・項目案を直す"
+    },
+    "S1d-prep-sheet.dc.html": {
+      "w": 400,
+      "x": 1440,
+      "y": 3900,
+      "h": 1480,
+      "title": "開始前・議題を添付"
+    },
+    "S12-lists.dc.html": {
+      "w": 400,
+      "x": 2400,
+      "y": 6200,
+      "h": 1340,
+      "title": "質問・定型文の編集"
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "S3a-talking.dc.html",
+    "S3c-thinking.dc.html",
+    "S4-speaking.dc.html",
+    "S5-filler.dc.html",
+    "S3d-overlap.dc.html",
+    "S6-errors.dc.html",
+    "E1-bands.dc.html",
+    "E2-inline.dc.html",
+    "E3-candfail.dc.html",
+    "E4-badkey.dc.html",
+    "M-menu.dc.html",
+    "F-focus.dc.html",
+    "H700.dc.html",
+    "S0-1-key.dc.html",
+    "S0-1b-badkey.dc.html",
+    "S0-2-you.dc.html",
+    "S0-3-voice.dc.html",
+    "S1-idle.dc.html",
+    "S1b-not-meeting.dc.html",
+    "S1c-prep-draft.dc.html",
+    "S1d-prep-sheet.dc.html",
+    "S2-connecting.dc.html",
+    "S7-summary.dc.html",
+    "S7b-summary-fixed.dc.html",
+    "S8-settings.dc.html",
+    "S9-voices.dc.html",
+    "S11-hearing.dc.html",
+    "S12-lists.dc.html",
+    "W360.dc.html",
+    "Dark.dc.html",
+    "Dark-states.dc.html"
+  ],
+  "notes": {
+    "rowMeeting": {
+      "x": 0,
+      "y": -300,
+      "text": "会議中",
+      "kind": "title1",
+      "maxW": 3280
+    },
+    "rowErrors": {
+      "x": 0,
+      "y": 1000,
+      "text": "失敗と特殊な状態",
+      "kind": "title1",
+      "maxW": 3280
+    },
+    "rowFirst": {
+      "x": 0,
+      "y": 2300,
+      "text": "はじめて使う",
+      "kind": "title1",
+      "maxW": 2320
+    },
+    "rowAfter": {
+      "x": 0,
+      "y": 5900,
+      "text": "会議のあと・設定",
+      "kind": "title1",
+      "maxW": 2800
+    },
+    "rowTheme": {
+      "x": 0,
+      "y": 8860,
+      "text": "幅とテーマ",
+      "kind": "title1",
+      "maxW": 1320
+    },
+    "rowPrep": {
+      "x": 0,
+      "y": 3600,
+      "text": "会議の前・開始前（今日の議題）",
+      "kind": "title1",
+      "maxW": 1840
+    }
+  },
+  "designSystems": []
+}

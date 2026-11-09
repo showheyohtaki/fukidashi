@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>フキダシ試験用会議</title>
+  </head>
+  <body>
+    <h1>試験用の会議ページ</h1>
+    <p>
+      差し替えマイクを 2 つの RTCPeerConnection
+      でループバックし、受信側の音を録音します。 ?transport=none は sender
+      を使わない経路を試します。tabCapture と本物の会議網は通りません。
+      ?clone=meet は stream.clone → track.clone → replaceTrack を使い、
+      「元トラックだけ停止」で送信中の複製が残る場合を試します。
+    </p>
+    <button id="join">参加</button><button id="mute">ミュート切替</button>
+    <button id="stop-original" disabled>元トラックだけ停止</button>
+    <pre id="out"></pre>
+    <section id="speaker-fixture" aria-label="話者名の試験用タイル">
+      <div data-participant-id="customer-a">
+        <span data-self-name="あなた">佐藤</span
+        ><span aria-label="発話中">●</span>
+      </div>
+      <div data-participant-id="customer-b" data-speaking="false">
+        <span translate="no">田中</span>
+      </div>
+      <div data-participant-id="self" data-is-self="true" data-speaking="true">
+        <span data-self-name="あなた">鈴木（あなた）</span>
+      </div>
+      <div data-participant-id="bot" data-speaking="true">
+        <span class="notranslate">Notta Bot</span>
+      </div>
+    </section>
+    <script type="module">
+      import { createReceiverRecorder } from "./recorder.mjs";
+      const transport =
+        new URLSearchParams(location.search).get("transport") === "none"
+          ? "none"
+          : "webrtc";
+      const meetClone =
+        transport === "webrtc" &&
+        new URLSearchParams(location.search).get("clone") === "meet";
+      let stream, cloneStream, sendingTrack, recordingStream, ctx, analyser;
+      const seen = [];
+      let peak = 0,
+        onset = 0,
+        lastLoud = 0,
+        levels = [];
+      const recorder = createReceiverRecorder({
+        getStream: () => recordingStream,
+        resetStats: () => {
+          peak = 0;
+          onset = 0;
+          lastLoud = 0;
+          levels = [];
+        },
+        stats: () => ({ peak, onset, lastLoud, levels: levels.slice() }),
+      });
+      window.addEventListener("message", (e) => {
+        if (e.source === window && e.data?.__koe)
+          seen.push(JSON.stringify(e.data));
+      });
+      function iceComplete(pc) {
+        return new Promise((resolve, reject) => {
+          const timer = setTimeout(() => {
+            cleanup();
+            reject(new Error("ICE gathering timed out"));
+          }, 10000);
+          const cleanup = () => {
+            clearTimeout(timer);
+            pc.removeEventListener("icegatheringstatechange", changed);
+          };
+          const changed = () => {
+            if (pc.iceGatheringState === "complete") {
+              cleanup();
+              resolve();
+            }
+          };
+          pc.addEventListener("icegatheringstatechange", changed);
+          changed();
+        });
+      }
+      document.getElementById("join").onclick = async () => {
+        document.getElementById("join").disabled = true;
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          sendingTrack = stream.getAudioTracks()[0];
+          if (meetClone) {
+            cloneStream = stream.clone();
+            sendingTrack = cloneStream.getAudioTracks()[0].clone();
+          }
+          recordingStream = stream;
+          if (transport === "webrtc") {
+            const pc1 = (window.testPeer = new RTCPeerConnection({
+              iceServers: [],
+            }));
+            const pc2 = (window.testReceiverPeer = new RTCPeerConnection({
+              iceServers: [],
+            }));
+            pc2.ontrack = (e) => {
+              recordingStream = new MediaStream([e.track]);
+              const sink = (window.testRemoteSink = new Audio());
+              sink.muted = true;
+              sink.srcObject = recordingStream;
+              sink.play().catch(() => {});
+            };
+            if (meetClone) {
+              window.testSender = pc1.addTransceiver("audio", {
+                direction: "sendonly",
+              }).sender;
+              await window.testSender.replaceTrack(sendingTrack);
+            } else window.testSender = pc1.addTrack(sendingTrack, stream);
+            await pc1.setLocalDescription(await pc1.createOffer());
+            await iceComplete(pc1);
+            await pc2.setRemoteDescription(pc1.localDescription);
+            await pc2.setLocalDescription(await pc2.createAnswer());
+            await iceComplete(pc2);
+            await pc1.setRemoteDescription(pc2.localDescription);
+            await new Promise((resolve, reject) => {
+              const timer = setTimeout(() => {
+                cleanup();
+                reject(new Error("Loopback connection timed out"));
+              }, 15000);
+              const cleanup = () => {
+                clearTimeout(timer);
+                pc1.removeEventListener("connectionstatechange", changed);
+              };
+              const changed = () => {
+                if (
+                  pc1.connectionState === "connected" &&
+                  recordingStream !== stream
+                ) {
+                  cleanup();
+                  resolve();
+                } else if (pc1.connectionState === "failed") {
+                  cleanup();
+                  reject(new Error("Loopback connection failed"));
+                }
+              };
+              pc1.addEventListener("connectionstatechange", changed);
+              changed();
+            });
+          }
+          ctx = new AudioContext();
+          await ctx.resume();
+          analyser = ctx.createAnalyser();
+          analyser.fftSize = 512;
+          ctx.createMediaStreamSource(recordingStream).connect(analyser);
+          const silent = ctx.createGain();
+          silent.gain.value = 0;
+          analyser.connect(silent).connect(ctx.destination);
+          const data = new Float32Array(512);
+          setInterval(() => {
+            analyser.getFloatTimeDomainData(data);
+            const rms = Math.sqrt(
+              data.reduce((n, x) => n + x * x, 0) / data.length,
+            );
+            peak = Math.max(peak, rms);
+            if (recorder.isRecording()) levels.push({ at: Date.now(), rms });
+            if (rms > 0.002) {
+              if (!onset) onset = Date.now();
+              lastLoud = Date.now();
+            }
+          }, 20);
+          document.getElementById("out").textContent = "joined";
+          document.getElementById("stop-original").disabled = !meetClone;
+        } catch (error) {
+          document.getElementById("out").textContent =
+            "join failed: " + error.message;
+          throw error;
+        }
+      };
+      document.getElementById("mute").onclick = () => {
+        sendingTrack.enabled = !sendingTrack.enabled;
+      };
+      const stopOriginal = () => {
+        if (!meetClone) throw new Error("clone=meet mode required");
+        stream.getAudioTracks().forEach((t) => t.stop());
+        document.getElementById("stop-original").disabled = true;
+      };
+      document.getElementById("stop-original").onclick = stopOriginal;
+      window.receiver = {
+        start: () => recorder.start(),
+        finish: () => recorder.finish(),
+        abort: () => recorder.abort(),
+        stats() {
+          return {
+            peak,
+            onset,
+            lastLoud,
+            transport,
+            cloneMode: meetClone ? "meet" : "direct",
+            remote: recordingStream !== stream,
+            connection: window.testPeer?.connectionState || "none",
+          };
+        },
+        messages() {
+          return seen.slice();
+        },
+        track() {
+          return {
+            enabled: sendingTrack.enabled,
+            label: sendingTrack.label,
+            readyState: sendingTrack.readyState,
+            settings: sendingTrack.getSettings(),
+            originalLabel: stream.getAudioTracks()[0].label,
+            originalSettings: stream.getAudioTracks()[0].getSettings(),
+            originalReadyState: stream.getAudioTracks()[0].readyState,
+            cloneReadyState: cloneStream?.getAudioTracks()[0].readyState,
+          };
+        },
+        stopOriginal,
+        async transportStats() {
+          const rows = [...(await window.testPeer.getStats()).values()];
+          const audio = rows.filter(
+            (r) =>
+              r.type === "outbound-rtp" && (r.kind || r.mediaType) === "audio",
+          );
+          const sources = rows.filter(
+            (r) =>
+              r.type === "media-source" && (r.kind || r.mediaType) === "audio",
+          );
+          return {
+            at: Date.now(),
+            outbound: audio.map((r) => ({
+              id: r.id,
+              packetsSent: r.packetsSent,
+              bytesSent: r.bytesSent,
+            })),
+            packetsSent: audio.reduce((n, r) => n + (r.packetsSent || 0), 0),
+            sources: sources.map((r) => ({
+              id: r.id,
+              totalAudioEnergy: r.totalAudioEnergy,
+              audioLevel: r.audioLevel,
+            })),
+          };
+        },
+        async clone() {
+          const original = sendingTrack,
+            clone = original.clone();
+          if (window.testSender) await window.testSender.replaceTrack(clone);
+          original.stop();
+          sendingTrack = clone;
+          if (!meetClone) {
+            stream.removeTrack(original);
+            stream.addTrack(clone);
+          }
+          return clone.readyState;
+        },
+      };
+    </script>
+  </body>
+</html>

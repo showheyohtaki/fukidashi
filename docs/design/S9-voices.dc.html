@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>声の選択</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Sans+JP:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0075DE}a:hover{color:#005BAB}
+</style>
+</helmet>
+<div style="width: 400px; height: 1200px; box-sizing: border-box; display: flex; flex-direction: column; background: #FFFFFF; color: #191918; font-family: Inter, 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif; font-size: 14px; line-height: 1.5">
+
+  <!-- 見出し -->
+  <div style="flex: none; height: 48px; box-sizing: border-box; display: flex; align-items: center; gap: 4px; padding: 0 16px 0 4px; border-bottom: 1px solid rgba(0,0,0,0.08)">
+    <button aria-label="設定に戻る" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; border-radius: 6px; cursor: pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    </button>
+    <h1 style="margin: 0; font-size: 18px; font-weight: 600; line-height: 1.4">声の選択</h1>
+  </div>
+
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 12px 16px">
+    <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #191918; text-wrap: pretty">声はあなたの代わりに相手に届きます。あなた自身が聞けなくても、既定の声でそのまま使えます。選び直したいときは、身近な人に 2〜3 本聞いてもらうのがおすすめです。</p>
+
+    <!-- 聞き比べ -->
+    <section aria-label="聞き比べ" style="padding: 10px 12px 12px; border: 1px solid rgba(0,0,0,0.06); background: #F6F5F4; border-radius: 12px">
+      <p style="margin: 0; font-size: 12px; line-height: 1.5; color: #615D59">聞き比べ用の文（どの声も同じ）</p>
+      <p style="margin: 2px 0 0; font-size: 14px; line-height: 1.5; color: #191918">はじめまして。本日はお時間をいただき、ありがとうございます。</p>
+      <div style="display: flex; align-items: center; gap: 4px; margin-top: 8px">
+        <label style="flex: none"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">1 本目の声</span><select style="width: 82px; height: 44px; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 0 6px; font: inherit; font-size: 13px; color: #191918; background: #FFFFFF"><option selected>marin</option><option>cedar</option><option>coral</option><option>sage</option><option>shimmer</option><option>alloy</option><option>ash</option><option>ballad</option><option>echo</option><option>verse</option></select></label>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#615D59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        <label style="flex: none"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">2 本目の声</span><select style="width: 82px; height: 44px; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 0 6px; font: inherit; font-size: 13px; color: #191918; background: #FFFFFF"><option>marin</option><option selected>cedar</option><option>coral</option><option>sage</option><option>shimmer</option><option>alloy</option><option>ash</option><option>ballad</option><option>echo</option><option>verse</option></select></label>
+        <button style="margin-left: auto; height: 44px; padding: 0 10px; display: flex; align-items: center; gap: 4px; white-space: nowrap; border: none; background: #0075DE; color: #FFFFFF; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>2 本を続けて鳴らす</button>
+      </div>
+    </section>
+
+    <!-- 声カード（「ファイルで保存」は選択中のカードだけ） -->
+    <ul aria-label="声の一覧" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px">
+      <li aria-current="true" style="padding: 10px 12px 12px; border: 2px solid #0075DE; background: #FFFFFF; border-radius: 12px; box-shadow: rgba(0,0,0,0.03) 0px 2px 6px">
+        <div style="display: flex; align-items: center; gap: 8px">
+          <span style="font-size: 15px; font-weight: 600; line-height: 1.45; color: #191918">marin</span>
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.125px; color: #005BAB; background: #F2F9FF; border-radius: 9999px; padding: 1px 8px">既定</span>
+          <span style="margin-left: auto; display: flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 600; color: #005BAB"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>選択中</span>
+        </div>
+        <div style="margin-top: 2px; font-size: 13px; line-height: 1.5; color: #31302E">落ち着いた、やわらかい声。デイトラが聞いて選びました</div>
+        <div style="display: flex; gap: 6px; margin-top: 8px">
+          <button aria-label="marin を鳴らす" style="height: 44px; padding: 0 12px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>鳴らす</button>
+          <button aria-label="marin をファイルで保存" style="height: 44px; padding: 0 12px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7.5 10.5L12 15l4.5-4.5"></path><path d="M5 19h14"></path></svg>ファイルで保存<span style="font-size: 12px; font-weight: 400; color: #615D59">（.wav）</span></button>
+        </div>
+      </li>
+
+      <li style="min-height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 8px 10px 8px 12px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; border-radius: 12px">
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35"><span style="font-size: 15px; font-weight: 600">cedar</span><span style="font-size: 12px; color: #615D59">（説明準備中）</span></span>
+        <button aria-label="cedar を鳴らす" style="flex: none; height: 44px; padding: 0 10px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>鳴らす</button>
+        <button aria-label="cedar をこの声にする" style="flex: none; height: 44px; padding: 0 10px; border: 1px solid #0075DE; background: #FFFFFF; color: #0075DE; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer">この声にする</button>
+      </li>
+      <li style="min-height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 8px 10px 8px 12px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; border-radius: 12px">
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35"><span style="font-size: 15px; font-weight: 600">coral</span><span style="font-size: 12px; color: #615D59">（説明準備中）</span></span>
+        <button aria-label="coral を鳴らす" style="flex: none; height: 44px; padding: 0 10px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>鳴らす</button>
+        <button aria-label="coral をこの声にする" style="flex: none; height: 44px; padding: 0 10px; border: 1px solid #0075DE; background: #FFFFFF; color: #0075DE; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer">この声にする</button>
+      </li>
+      <li style="min-height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 8px 10px 8px 12px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; border-radius: 12px">
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35"><span style="font-size: 15px; font-weight: 600">sage</span><span style="font-size: 12px; color: #615D59">（説明準備中）</span></span>
+        <button aria-label="sage を鳴らす" style="flex: none; height: 44px; padding: 0 10px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>鳴らす</button>
+        <button aria-label="sage をこの声にする" style="flex: none; height: 44px; padding: 0 10px; border: 1px solid #0075DE; background: #FFFFFF; color: #0075DE; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer">この声にする</button>
+      </li>
+      <li style="min-height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 8px 10px 8px 12px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; border-radius: 12px">
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35"><span style="font-size: 15px; font-weight: 600">shimmer</span><span style="font-size: 12px; color: #615D59">（説明準備中）</span></span>
+        <button aria-label="shimmer を鳴らす" style="flex: none; height: 44px; padding: 0 10px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>鳴らす</button>
+        <button aria-label="shimmer をこの声にする" style="flex: none; height: 44px; padding: 0 10px; border: 1px solid #0075DE; background: #FFFFFF; color: #0075DE; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer">この声にする</button>
+      </li>
+      <li style="min-height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 8px 10px 8px 12px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; border-radius: 12px">
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35"><span style="font-size: 15px; font-weight: 600">alloy</span><span style="font-size: 12px; color: #615D59">（説明準備中）</span></span>
+        <button aria-label="alloy を鳴らす" style="flex: none; height: 44px; padding: 0 10px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>鳴らす</button>
+        <button aria-label="alloy をこの声にする" style="flex: none; height: 44px; padding: 0 10px; border: 1px solid #0075DE; background: #FFFFFF; color: #0075DE; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer">この声にする</button>
+      </li>
+      <li style="min-height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 8px 10px 8px 12px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; border-radius: 12px">
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35"><span style="font-size: 15px; font-weight: 600">ash</span><span style="font-size: 12px; color: #615D59">（説明準備中）</span></span>
+        <button aria-label="ash を鳴らす" style="flex: none; height: 44px; padding: 0 10px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>鳴らす</button>
+        <button aria-label="ash をこの声にする" style="flex: none; height: 44px; padding: 0 10px; border: 1px solid #0075DE; background: #FFFFFF; color: #0075DE; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer">この声にする</button>
+      </li>
+      <li style="min-height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 8px 10px 8px 12px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; border-radius: 12px">
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35"><span style="font-size: 15px; font-weight: 600">ballad</span><span style="font-size: 12px; color: #615D59">（説明準備中）</span></span>
+        <button aria-label="ballad を鳴らす" style="flex: none; height: 44px; padding: 0 10px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>鳴らす</button>
+        <button aria-label="ballad をこの声にする" style="flex: none; height: 44px; padding: 0 10px; border: 1px solid #0075DE; background: #FFFFFF; color: #0075DE; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer">この声にする</button>
+      </li>
+      <li style="min-height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 8px 10px 8px 12px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; border-radius: 12px">
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35"><span style="font-size: 15px; font-weight: 600">echo</span><span style="font-size: 12px; color: #615D59">（説明準備中）</span></span>
+        <button aria-label="echo を鳴らす" style="flex: none; height: 44px; padding: 0 10px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>鳴らす</button>
+        <button aria-label="echo をこの声にする" style="flex: none; height: 44px; padding: 0 10px; border: 1px solid #0075DE; background: #FFFFFF; color: #0075DE; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer">この声にする</button>
+      </li>
+      <li style="min-height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 8px 10px 8px 12px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; border-radius: 12px">
+        <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35"><span style="font-size: 15px; font-weight: 600">verse</span><span style="font-size: 12px; color: #615D59">（説明準備中）</span></span>
+        <button aria-label="verse を鳴らす" style="flex: none; height: 44px; padding: 0 10px; display: flex; align-items: center; gap: 4px; border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF; color: #191918; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#31302E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>鳴らす</button>
+        <button aria-label="verse をこの声にする" style="flex: none; height: 44px; padding: 0 10px; border: 1px solid #0075DE; background: #FFFFFF; color: #0075DE; border-radius: 6px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer">この声にする</button>
+      </li>
+    </ul>
+
+    <p style="margin: 0; font-size: 12px; line-height: 1.6; color: #615D59">声を変えると、よく使う言葉の声を作り直します。会議中に変えたときは、次の開始から反映します。</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":400,"height":1200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

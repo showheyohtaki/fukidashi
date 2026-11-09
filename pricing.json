@@ -1,0 +1,10 @@
+{
+  "status": "要確認・金額は表示しない",
+  "verifiedAt": null,
+  "currency": "USD",
+  "models": {
+    "gpt-live-transcribe": {"inputAudioPerMillionTokens": null},
+    "gpt-realtime-2.1": {"inputAudioPerMillionTokens": null, "outputAudioPerMillionTokens": null},
+    "gpt-5.4-mini": {"inputPerMillionTokens": null, "outputPerMillionTokens": null}
+  }
+}
