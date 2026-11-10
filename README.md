@@ -76,6 +76,7 @@ Chrome ウェブストアには公開していません。手元で組み立て�
 |---|---|
 | [docs/MANUAL.md](docs/MANUAL.md) | 利用者向けマニュアル。入れ方・設定・会議の前と最中とあと・困ったとき |
 | [docs/setup-guide.md](docs/setup-guide.md) | AI に読ませる設定手順。手元の AI（ChatGPT・Claude など）に渡すと、画像を見せながら1手順ずつ案内します |
+| [PRIVACY.md](PRIVACY.md) | プライバシーポリシー。外部へ送る情報と、パソコンの中に保存する情報 |
 | [CHANGELOG.md](CHANGELOG.md) | 版ごとの変更 |
 | [docs/dev/README-dev.md](docs/dev/README-dev.md) | 開発者向け（構成・ビルド・試験） |
 | [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) | 第三者ライセンス |
